@@ -1,0 +1,11 @@
+/* App Component Styles */
+
+/* Center the content within the app component */
+:host {
+  height: 100vh;
+}
+
+/* Add padding around the main content */
+main {
+  padding: 20px;
+}

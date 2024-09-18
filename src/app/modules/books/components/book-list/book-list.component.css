@@ -1,0 +1,12 @@
+:host{
+  width: 100vw;
+}
+
+.book-item {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.book-item div {
+  margin-bottom: 0.25rem;
+}

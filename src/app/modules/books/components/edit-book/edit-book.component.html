@@ -1,0 +1,116 @@
+<div class="flex flex-column align-items-center h-full">
+  <div class="card flex flex-column">
+    <h1>Book Edit Form</h1>
+  </div>
+  <form class="w-full" [formGroup]="editForm" (ngSubmit)="loadBookDetails(editForm.get('id')?.value)">
+    <div class="grid w-full">
+      <div class="col-6 flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book ID Number</label>
+          <input type="text" pInputText formControlName="id" />
+          <div class="text-red-500" *ngIf="id.errors?.['required'] && (id.touched || id.dirty)">
+            Book ID is required !
+          </div>
+          <div class="text-red-500" *ngIf="id.errors?.['maxlength'] && (id.touched || id.dirty)">
+            Maximum Length is Not exceed by 3 !
+          </div>
+          <div class="text-red-500" *ngIf="id.errors?.['pattern'] && (id.touched || id.dirty)">
+            Only Number is Required !
+          </div>
+        </div>
+      </div>
+      <div class="col-6 flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book Title</label>
+          <input type="text" pInputText formControlName="title" />
+          <div class="text-red-500"  *ngIf="title.errors?.['required'] && (title.touched || title.dirty)">
+            Book Title is required !
+          </div>
+        </div>
+      </div>
+      <div class="col-6 flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book Author</label>
+          <input type="text" pInputText formControlName="author" />
+          <div class="text-red-500" *ngIf="author.errors?.['required'] && (author.touched || author.dirty)">
+            Book Author is required !
+          </div>
+        </div>
+      </div>
+      <div class="col-6 flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book Genre</label>
+          <input type="text" pInputText formControlName="genre" />
+          <div class="text-red-500" *ngIf="genre.errors?.['required'] && (genre.touched || genre.dirty)">
+            Book Genre is required !
+          </div>
+        </div>
+      </div>
+      <div class="col-6 flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book Price</label>
+          <input type="text" pInputText formControlName="price" />
+          <div class="text-red-500" *ngIf="price.errors?.['required'] && (price.touched || price.dirty)">
+            Book Price is required !
+          </div>
+          <div class="text-red-500" *ngIf="price.errors?.['maxlength'] && (price.touched || price.dirty)">
+            Maximum Price is Not exceed by thousnds Rupees !
+          </div>
+          <div class="text-red-500" *ngIf="price.errors?.['pattern'] && (price.touched || price.dirty)">
+            Price can Only be in Number !
+          </div>
+        </div>
+      </div>
+      <div class="col-6 flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book Publication Date(MMDDYYYY)</label>
+          <input type="text" pInputText formControlName="pbdate" />
+          <div class="text-red-500" *ngIf="pbdate.errors?.['required'] && (pbdate.touched || pbdate.dirty)">
+            Book Publication Date is required !
+          </div>
+          <div class="text-red-500" *ngIf="pbdate.errors?.['pattern'] && (pbdate.touched || pbdate.dirty)">
+            Date can Only be in Number !
+          </div>
+          <div class="text-red-500" *ngIf="pbdate.errors?.['maxlength'] && (pbdate.touched || pbdate.dirty)">
+            Date can not Exceed in Number !
+          </div>
+        </div>
+      </div>
+      <div class="col flex justify-content-center w-4">
+        <div
+          class="flex flex-column text-center p-3 border-round-sm font-bold w-6"
+        >
+          <label class="my-3">Enter Book Description</label>
+          <textarea
+            rows="5"
+            cols="40"
+            pInputTextarea
+            formControlName="desc"
+          ></textarea>
+          <div class="text-red-500" *ngIf="desc.errors?.['required'] && (desc.touched || desc.dirty)">
+            Book Description is required !
+          </div>
+          <div class="text-red-500" *ngIf="desc.errors?.['maxlength'] && (desc.touched || desc.dirty)">
+            Maximum Word Limit is Not exceed by 5000 !
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div>
+    <p-button *ngIf="currentBook?.id" class="m-1" (onClick)="saveBook()"  severity="success" label="Save"></p-button>
+    <p-button *ngIf="currentBook?.id" class="m-1" (onClick)="cancelEdit()"  severity="danger" label="Cancel"></p-button>
+  </div>
+</div>
